@@ -1,6 +1,7 @@
 import { DataTypes, Model, UUIDV4 } from "sequelize"
 import sequelize from "../database"
 import { INote } from "../utilities"
+import User from "./user";
 
 interface NoteInstance extends Model<INote>, INote {}
 
@@ -10,6 +11,10 @@ const Note = sequelize.define<NoteInstance>("Note", {
         defaultValue: UUIDV4,
         primaryKey: true,
         unique: true
+    },
+    owner: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
     title: {
         type: DataTypes.STRING,
@@ -23,6 +28,11 @@ const Note = sequelize.define<NoteInstance>("Note", {
     timestamps: true,
     tableName: "Notes",
     modelName: "Note"
+});
+
+Note.hasOne(User, {
+    foreignKey: "email",
+    as: "owner"
 });
 
 export default Note;
