@@ -38,8 +38,8 @@ const User = sequelize.define<UserInstance>("User", {
     modelName: "User"
 });
 
-User.hasMany(Note, {
-    foreignKey: "email"
-});
+// User.hasMany(Note, {
+//     foreignKey: "email"
+// });
 
 export default User;

@@ -32,7 +32,7 @@ const Note = sequelize.define<NoteInstance>("Note", {
 
 Note.hasOne(User, {
     foreignKey: "email",
-    as: "owner"
+    as: "author"
 });
 
 export default Note;
