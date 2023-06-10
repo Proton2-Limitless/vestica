@@ -5,3 +5,4 @@ export const requestLogger = async (req: Request, res: Response, next: NextFunct
   console.info(`request (${DateTime.now().toISO()}): ${req.protocol}://${req.hostname}${req.originalUrl} (${req.method})`);
   return next();
 };
+

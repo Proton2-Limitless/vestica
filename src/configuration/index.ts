@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const config = {
-    SQL_URL: process.env.SQL_URL as string
+    APP_NAME: process.env.APP_NAME as string
 }
 
 const incompleteEntry = Object.entries(config)
