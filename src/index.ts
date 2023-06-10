@@ -3,6 +3,7 @@ import "express-async-errors";
 import { requestLogger } from "./utilities";
 import { NotFoundError, errorHandler } from "@habeebllahmmj/common";
 import { config } from "./configuration";
+import { sequelize } from "./database";
 
 const app = express();
 
@@ -20,5 +21,6 @@ app.use("*", (req, res, next) => {
 app.use(errorHandler);
 
 app.listen(3000, async () => {
+  await sequelize.sync();
   console.log("Server is running on port 3000");
 });
