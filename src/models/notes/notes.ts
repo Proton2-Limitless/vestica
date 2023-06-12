@@ -1,11 +1,11 @@
 import { DataTypes, Model, UUIDV4 } from "sequelize"
-import sequelize from "../database"
-import { INote } from "../utilities"
-import User from "./user";
+import { sequelize } from "../../database"
+import { INote } from "../../utilities"
+import { User } from "../users"
 
 interface NoteInstance extends Model<INote>, INote {}
 
-const Note = sequelize.define<NoteInstance>("Note", {
+export const Note = sequelize.define<NoteInstance>("Note", {
     id: {
         type: DataTypes.UUID,
         defaultValue: UUIDV4,
@@ -32,7 +32,5 @@ const Note = sequelize.define<NoteInstance>("Note", {
 
 Note.hasOne(User, {
     foreignKey: "email",
-    as: "author"
+    as: "owner"
 });
-
-export default Note;

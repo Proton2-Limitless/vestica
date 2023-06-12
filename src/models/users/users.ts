@@ -1,11 +1,10 @@
 import { DataTypes, Model, UUIDV4 } from "sequelize"
-import sequelize from "../database"
-import { IUser, UserRole } from "../utilities"
-import Note from "./note";
+import { sequelize } from "../../database"
+import { IUser, UserRole } from "../../utilities"
 
 interface UserInstance extends Model<IUser>, IUser {}
 
-const User = sequelize.define<UserInstance>("User", {
+export const User = sequelize.define<UserInstance>("User", {
     id: {
         type: DataTypes.UUID,
         defaultValue: UUIDV4,
@@ -37,9 +36,3 @@ const User = sequelize.define<UserInstance>("User", {
     tableName: "Users",
     modelName: "User"
 });
-
-// User.hasMany(Note, {
-//     foreignKey: "email"
-// });
-
-export default User;

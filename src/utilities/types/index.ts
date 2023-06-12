@@ -1,2 +1,3 @@
-export * from "./user"
-export * from "./note"
+export * from "./general";
+export * from "./notes";
+export * from "./user";
